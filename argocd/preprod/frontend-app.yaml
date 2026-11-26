@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: taskflow-preprod-frontend
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Prem-krish-308/Taskflow-GitOps.git
+    targetRevision: main
+    path: helm/charts/frontend
+    helm:
+      releaseName: frontend
+      valueFiles:
+        - ../../environments/preprod/frontend-values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: taskflow-preprod
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: premkrish308/taskflow-frontend
+  tag: ""
+  pullPolicy: IfNotPresent
+serviceAccount:
+  name: taskflow-sa
+service:
+  type: ClusterIP
+  port: 3000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+ingress:
+  enabled: false
+  className: alb
+  scheme: internet-facing
+  targetType: ip
+  healthCheckPath: /health
+  host: mytask.com
+  groupName: taskflow-shared

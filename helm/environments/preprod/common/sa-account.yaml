@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: taskflow-sa
+  namespace: taskflow-preprod
+automountServiceAccountToken: false

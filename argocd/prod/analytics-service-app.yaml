@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: taskflow-prod-analytics
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Prem-krish-308/Taskflow-GitOps.git
+    targetRevision: main
+    path: helm/charts/analytics-service
+    helm:
+      releaseName: analytics-service
+      valueFiles:
+        - ../../environments/prod/analytics-service-values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: taskflow-prod
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

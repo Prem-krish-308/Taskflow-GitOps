@@ -1,0 +1,6 @@
+replicaCount: 2
+
+image:
+  tag: "c3938e02fe020d70e277829fe1666e440d3074d4"
+ingress:
+  enabled: true

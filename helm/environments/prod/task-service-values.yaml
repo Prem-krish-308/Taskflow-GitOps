@@ -1,0 +1,4 @@
+replicaCount: 1
+
+image:
+  tag: "e75ef0302b361942e54307db7850a29243f32d85"

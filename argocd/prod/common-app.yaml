@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: taskflow-prod-common
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Prem-krish-308/Taskflow-GitOps.git
+    targetRevision: main
+    path: helm/environments/prod/common
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: taskflow-prod
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
