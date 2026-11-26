@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Prem-krish-308/Taskflow-GitOps.git
+    repoURL: git@github.com:Prem-krish-308/Taskflow-GitOps.git
     targetRevision: main
     path: helm/environments/prod/common
 
